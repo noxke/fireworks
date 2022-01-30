@@ -18,7 +18,7 @@ def randv():    # 生成随机初速度
     return v
 
 def rand_color():   # 随机生成烟花颜色
-    color_list = [(244, 214, 215), (55, 20, 88), (151, 68, 114), (230, 190, 146), (244, 252, 255), (230, 197, 246), (181, 180, 222), (191, 85, 177), (255, 199, 209), (200, 50, 66), (223, 219, 216), (158, 167, 164), (173, 254, 255), (185, 219, 149), (72, 141, 235), (252, 117, 249), (232, 169, 180), (155, 157, 170), (182, 98, 130)]
+    color_list = [(244, 214, 215), (55, 20, 88), (151, 68, 114), (230, 190, 146), (244, 252, 255), (230, 197, 246), (181, 180, 222), (191, 85, 177), (255, 199, 209), (200, 50, 66), (223, 219, 216), (158, 167, 164), (173, 254, 255), (185, 219, 149), (72, 141, 235), (252, 117, 249), (232, 169, 180), (155, 157, 170), (182, 98, 130), (248, 215, 20), (136, 214, 253), (221, 0, 27)]
     return color_list[random.randint(0, len(color_list) - 1)]
 
 def add_fireworks(list):  # 添加新的烟花
@@ -47,11 +47,11 @@ class Item(pygame.sprite.Sprite):   # 烟花颗粒
         self.move()
         if self.rect.y > HEIGHT - 20 and self.is_explode:
             self.kill()
-        if self.vy < 2 and not self.is_explode:
+        if self.vy < 1 and not self.is_explode:
             self.explode(radius)
         if self.is_explode: # 爆炸后一段时间删除颗粒
             self.count += 1
-            if self.count > 50:
+            if self.count > 55:
                 self.kill()
 
     def move(self): # vx为水平方向速度,vy为竖直方向速度
